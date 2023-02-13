@@ -15,14 +15,23 @@ duda_rapport = games[0]
 board = duda_rapport.board()
 
 
-first_moves = []
+
+first_move = input('what will your first move be laddie?')
+
+#Removing games with a first move different from the 
+trimmed_games = []
 for game in games:
-	first_moves.append(str(game.next().move))
-	print(game.next().move)
-print(first_moves)
+	if str(game.next().move) == first_move:
+		trimmed_games.append(game)
+
+
+moves = []
+for game in trimmed_games:
+	moves.append(str(game.next().next().move))
+
 
 # Count the number of occurrences of each move
-move_counts = Counter(first_moves)
+move_counts = Counter(moves)
 
 # Get the five most common moves
 top_five = move_counts.most_common(5)
@@ -30,13 +39,4 @@ top_five = move_counts.most_common(5)
 # Print the five most common moves
 for move, count in top_five:
     print(f"{move}: {count}")
-
-first_move = input('what will your first move be laddie?')
-
-trimmed_games = []
-for game in games:
-	if str(game.next().move) == first_move:
-		trimmed_games.append(game)
-for game in trimmed_games:
-	print(game.next().move)
-
+games = trimmed_games
