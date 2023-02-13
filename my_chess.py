@@ -17,10 +17,12 @@ board = chess.Board()
 
 i = 1
 while True:
+	if i == 1:
+		print("Welcome to Logan's chess data zone! Enter moves to traverse games in the 2022 candidates tournament. You can input moves in standard uci format (ex: e2e4)")
 	if i % 2:
-		current_move = input('what will your move be laddie?  ')
+		current_move = input("What will white's move be laddie? " )
 	else:
-		current_move = input("What is your opponent's response?  ")	
+		current_move = input("How will black respond?  ")	
 	i += 1
 	board_move = chess.Move.from_uci(current_move)
 	board.push(board_move)
@@ -46,7 +48,9 @@ while True:
 	# Get the five most common moves
 	top_five = move_counts.most_common(5)
 
+	
 	# Print the five most common moves
+	print("Most common moves: ")
 	for move, count in top_five:
 		print(f"{move}: {count}")
 	games = trimmed_games
